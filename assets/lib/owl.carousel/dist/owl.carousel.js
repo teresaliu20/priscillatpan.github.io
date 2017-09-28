@@ -1845,12 +1845,6 @@
 				if (e.namespace && this._core.settings.autoHeight && e.property.name == 'position'){
 					this.update();
 				}
-			}, this),
-			'loaded.owl.lazy': $.proxy(function(e) {
-				if (e.namespace && this._core.settings.autoHeight
-					&& e.element.closest('.' + this._core.settings.itemClass).index() === this._core.current()) {
-					this.update();
-				}
 			}, this)
 		};
 
@@ -2081,16 +2075,11 @@
 			dimensions = video.width && video.height ? 'style="width:' + video.width + 'px;height:' + video.height + 'px;"' : '',
 			customTn = target.find('img'),
 			srcType = 'src',
-			lazyClass = '',
 			settings = this._core.settings,
 			create = function(path) {
 				icon = '<div class="owl-video-play-icon"></div>';
 
-				if (settings.lazyLoad) {
-					tnLink = '<div class="owl-video-tn ' + lazyClass + '" ' + srcType + '="' + path + '"></div>';
-				} else {
-					tnLink = '<div class="owl-video-tn" style="opacity:1;background-image:url(' + path + ')"></div>';
-				}
+				tnLink = '<div class="owl-video-tn" style="opacity:1;background-image:url(' + path + ')"></div>';
 				target.after(tnLink);
 				target.after(icon);
 			};
